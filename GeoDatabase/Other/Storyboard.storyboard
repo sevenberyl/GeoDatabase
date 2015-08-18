@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tFR-Nk-9Nq">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Kab-PK-aY3">
+            <objects>
+                <navigationController id="tFR-Nk-9Nq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LPg-AF-vng">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MTk-l1-xKj" kind="relationship" relationship="rootViewController" id="LIp-ym-aGU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HcN-bD-Eg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="-87"/>
+        </scene>
+        <!--南宁市电子地图-->
+        <scene sceneID="Kmq-Ln-vp8">
+            <objects>
+                <viewController storyboardIdentifier="LocalTiledLayerViewController" id="MTk-l1-xKj" customClass="WZMainController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gUF-P6-ATP"/>
+                        <viewControllerLayoutGuide type="bottom" id="F24-Sf-Oga"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="skR-e9-zNR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzP-XN-b4r" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.90000000000000002" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="chk-vN-0Xw">
+                                <rect key="frame" x="58" y="518" width="204" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Wjj-Ps-kMc"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderChange:" destination="MTk-l1-xKj" eventType="valueChanged" id="3cU-r7-bYS"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F24-Sf-Oga" firstAttribute="top" secondItem="chk-vN-0Xw" secondAttribute="bottom" constant="20" id="0br-Mk-4cJ"/>
+                            <constraint firstItem="chk-vN-0Xw" firstAttribute="leading" secondItem="skR-e9-zNR" secondAttribute="leading" constant="60" id="AX2-DX-90z"/>
+                            <constraint firstAttribute="bottom" secondItem="hzP-XN-b4r" secondAttribute="bottom" id="PNV-0U-dJ4"/>
+                            <constraint firstAttribute="trailing" secondItem="hzP-XN-b4r" secondAttribute="trailing" id="YGD-b4-WoX"/>
+                            <constraint firstItem="hzP-XN-b4r" firstAttribute="top" secondItem="skR-e9-zNR" secondAttribute="top" id="lIh-Vv-lz5"/>
+                            <constraint firstAttribute="trailing" secondItem="chk-vN-0Xw" secondAttribute="trailing" constant="60" id="ml6-il-jpB"/>
+                            <constraint firstItem="hzP-XN-b4r" firstAttribute="leading" secondItem="skR-e9-zNR" secondAttribute="leading" id="sLF-dB-0AB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="南宁市电子地图" id="ykb-69-m2V">
+                        <barButtonItem key="leftBarButtonItem" title="定位" id="mxD-eK-3f8">
+                            <connections>
+                                <action selector="localButton:" destination="MTk-l1-xKj" id="nJi-OD-SHR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="图层" id="4VS-1I-Ir0">
+                            <connections>
+                                <action selector="chooseButton:" destination="MTk-l1-xKj" id="LsS-VB-MuM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="hzP-XN-b4r" id="CGA-au-Xfs"/>
+                        <outlet property="slider" destination="chk-vN-0Xw" id="oSE-Gg-Kjj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7N-lf-5Wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="-87"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
